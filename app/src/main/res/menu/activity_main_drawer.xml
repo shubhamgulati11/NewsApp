@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/business"
+            android:icon="@drawable/ic_business"
+            android:title="Business"/>
+        <item
+            android:id="@+id/techCrunch"
+            android:icon="@drawable/ic_computer"
+            android:title="Tech Crunch"/>
+        <item
+            android:id="@+id/espn"
+            android:icon="@drawable/ic_espn"
+            android:title="ESPN"/>
+        <item
+            android:id="@+id/espn_cric"
+            android:icon="@drawable/ic_espn"
+            android:title="ESPN Cricket"/>
+        <item
+            android:id="@+id/ign"
+            android:icon="@drawable/ic_ign"
+            android:title="IGN"/>
+        <item
+            android:id="@+id/ew"
+            android:icon="@drawable/ic_ew"
+            android:title="Entertainment Weekly" />
+        <item
+            android:id="@+id/buzzfeed"
+            android:icon="@drawable/ic_bz"
+            android:title="Buzzfeed"/>
+        <item
+            android:id="@+id/ft"
+            android:icon="@drawable/ic_ft"
+            android:title="Financial Times" />
+        <item
+            android:id="@+id/googlenews"
+            android:icon="@drawable/ic_gw"
+            android:title="Google News"/>
+    </group>
+
+
+
+</menu>

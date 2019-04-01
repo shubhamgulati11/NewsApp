@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "781283492784",
+    "firebase_url": "https://codingblocksfinal.firebaseio.com",
+    "project_id": "codingblocksfinal",
+    "storage_bucket": "codingblocksfinal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:781283492784:android:54e179b9f4b0c44b",
+        "android_client_info": {
+          "package_name": "com.example.shubhamgulati.codingblocksfinal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "781283492784-6uc91opn0lk01668mntof0p0bt6b47ku.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.shubhamgulati.codingblocksfinal",
+            "certificate_hash": "5b05a5f5965b2fc65b175af782756e9a6b5ab831"
+          }
+        },
+        {
+          "client_id": "781283492784-uluik66e8csmmu5eev2kncfiohh0j2eu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.shubhamgulati.codingblocksfinal",
+            "certificate_hash": "758f49bb2b068d58aafea85484aa93a3bb0a919c"
+          }
+        },
+        {
+          "client_id": "781283492784-pbji06t766o4p5bs4eledgj9egplbij1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBW10hMR4CLpox6U6kHzseMEbVkFLu0OkE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "781283492784-pbji06t766o4p5bs4eledgj9egplbij1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
