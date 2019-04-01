@@ -19,12 +19,11 @@ import java.util.ArrayList;
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     Context cxt;
     ArrayList<articles> articlesArrayList;
-    DatabaseReference childreference;
 
-    public Adapter(Context cxt, ArrayList<articles> articlesArrayList, DatabaseReference childreference) {
+    public Adapter(Context cxt, ArrayList<articles> articlesArrayList) {
         this.cxt = cxt;
         this.articlesArrayList = articlesArrayList;
-        this.childreference = childreference;
+
     }
 
 //    public Adapter(Context cxt, ArrayList<articles> articlesArrayList) {
@@ -63,14 +62,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             }
         });
 
-        holder.tvTitle.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                holder.tvTitle.setTextColor(Color.BLUE);
-                childreference.push().setValue(a);
-                return true;
-            }
-        });
+
 
     }
 

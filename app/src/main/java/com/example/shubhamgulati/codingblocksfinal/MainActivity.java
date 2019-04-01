@@ -42,23 +42,38 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener , FirebaseAuth.AuthStateListener {
+        implements NavigationView.OnNavigationItemSelectedListener {
     TextView tv,tvUsername,tvEmail;
     RecyclerView rv;
     ImageView imageView;
     Adapter adapter;
     LinearLayoutManager lm;
-    FirebaseAuth firebaseAuth;
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference rootreference,childreference;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        firebaseAuth = FirebaseAuth.getInstance();
-        firebaseAuth.addAuthStateListener(this);
-        firebaseDatabase = FirebaseDatabase.getInstance();
+
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+
+
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View view =  navigationView.getHeaderView(0);
+        navigationView.setNavigationItemSelectedListener(this);
+        tv=findViewById(R.id.tv);
+        rv=findViewById(R.id.rv);
+        NetworkCall("https://newsapi.org/v2/top-headlines?sources=google-news&apiKey=a7e6f3cead7440e088d924a59ff5b388");
 
     }
 
@@ -168,7 +183,7 @@ public class MainActivity extends AppCompatActivity
                     public void run() {
                         ArrayList<articles> articles = apiResponse.getArticles();
                         Log.e("TAG",""+apiResponse.getTotalResults());
-                        adapter = new Adapter(getBaseContext(),articles,childreference);
+                        adapter = new Adapter(getBaseContext(),articles);
                         lm = new LinearLayoutManager(getBaseContext());
                         rv.setLayoutManager(lm);
                         rv.setAdapter(adapter);
@@ -181,44 +196,7 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    @Override
-    public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-        if(firebaseAuth.getCurrentUser()==null){
-            Intent loginintent = AuthUI.getInstance()
-                    .createSignInIntentBuilder().
-                            setAvailableProviders(Arrays.asList(
-                                    new AuthUI.IdpConfig.GoogleBuilder().build()
-                            )).build();
-            startActivityForResult(loginintent,12345);
-        } else {
-            FirebaseUser cu = firebaseAuth.getCurrentUser();
-            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-            setSupportActionBar(toolbar);
 
-            rootreference = firebaseDatabase.getReference();
-            childreference = rootreference.child(cu.getUid());
-
-
-            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                    this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-            drawer.addDrawerListener(toggle);
-            toggle.syncState();
-
-            NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-            View view =  navigationView.getHeaderView(0);
-            navigationView.setNavigationItemSelectedListener(this);
-            tv=findViewById(R.id.tv);
-            rv=findViewById(R.id.rv);
-            NetworkCall("https://newsapi.org/v2/top-headlines?sources=google-news&apiKey=a7e6f3cead7440e088d924a59ff5b388");
-            tvUsername = view.findViewById(R.id.tvUsername);
-            tvUsername.setText(cu.getDisplayName());
-            tvEmail = view.findViewById(R.id.tvEmail);
-            tvEmail.setText(cu.getEmail());
-            imageView = view.findViewById(R.id.imageView);
-            Picasso.get().load(cu.getPhotoUrl()).into(imageView);
-        }
-    }
 
 
 }
